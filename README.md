@@ -27,3 +27,12 @@ analiises the sentiment of the text.
 - reads in the positive and negative words in two dictionaries
 - counts each classes
 - prints the ratio of negative : positive words
+
+#Sources:
+- Minqing Hu and Bing Liu. "Mining and Summarizing Customer Reviews." 
+  Proceedings of the ACM SIGKDD International Conference on Knowledge 
+  Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle, 
+  Washington, USA, (positive and negative words list) 
+  
+- The Astronomy of Milton's 'Paradise Lost' by Thomas Orchard
+  Project Gutenberg @ www.gutenberg.org  
