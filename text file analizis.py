@@ -267,8 +267,8 @@ def analyse_sentiment( text_filename, positive_words_file_name = "positive-words
 
 def main():
     txtfile = "book.txt"
-    words_to_omit = ["has","This","had","I","you","for","or","on","from","be","at","are","it","he","as","The","was","by","is","with","which","in","the","of","to","and","a","an","another","no","the","a","an","no","another","some","any","my","our","their","her","his","its","another","each","every","certain","its","another","this","that"]
-    analyse_meaning(txtfile, words_to_omit)
+    stop_words = ["has","This","had","I","you","for","or","on","from","be","at","are","it","he","as","The","was","by","is","with","which","in","the","of","to","and","a","an","another","no","the","a","an","no","another","some","any","my","our","their","her","his","its","another","each","every","certain","its","another","this","that"]
+    analyse_meaning(txtfile, stop_words)
     analyse_sentiment(txtfile)
 
 if __name__ == '__main__':
