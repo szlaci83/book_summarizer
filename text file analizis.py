@@ -1,6 +1,7 @@
 import re
 
 def create_dict(word_list):
+    '''Returns dictionary from list input format { word : no_of_occurance_in_the_list} '''
     dict = {}
     for word in word_list:
         if word in dict:
@@ -11,23 +12,24 @@ def create_dict(word_list):
 
 
 def ignore_words(dictionary, word_list):
-    #dict = dictionary
+    '''Removes the worlds in the world_list from the dictionary'''
     for word in word_list:
         if word in dictionary:
             del dictionary[word]
     return dictionary
 
 def select_matching(dict, pattern):
+    '''Returns the elemets as a dictionary from a dictionary where the elements match the given pattern'''
     return_dict = {}
     keylist = dict.keys()
     for k in keylist:
         matching = re.search(pattern, k)
         if matching:
-            #return_dict[k : ""]
             return_dict[k] = dict[k]
     return return_dict
 
 def most_freq(word_list):
+    '''Returns the most frequent word in a list of words.'''
     dict = {}
     for word in word_list:
         if word in dict:
@@ -37,6 +39,7 @@ def most_freq(word_list):
     return max(dict, key = dict.get)
 
 def most_freq_after(word_list, word_to_check, step = 1):
+    '''Returns the most frequent word after a given word (word_to_check). Step means how many words after.'''
     result = "The textfile doesn't contain this word: " +word_to_check
     dict = {}
     #populate the dictionary
@@ -50,7 +53,6 @@ def most_freq_after(word_list, word_to_check, step = 1):
 
     if dict:
         result =  max(dict, key = dict.get)
-        #print(max(dict.values()))
     return result
 
 
