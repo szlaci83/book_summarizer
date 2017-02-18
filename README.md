@@ -35,4 +35,4 @@ analiises the sentiment of the text.
   Washington, USA, (positive and negative words list) 
   
 - The Astronomy of Milton's 'Paradise Lost' by Thomas Orchard
-  Project Gutenberg @ www.gutenberg.org  
+  Project Gutenberg @ www.gutenberg.org  (book.txt)
