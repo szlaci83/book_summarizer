@@ -1,4 +1,5 @@
-from text_analyser import *
+from text_analyser import BookAnalyser
+from flask import *
 
 #return the available currencies
 @app.route("/books", methods=['GET'])
@@ -12,7 +13,7 @@ def meaning():
     if not request.json or not 'bookname' in request.json:
         abort(4)
     bookname = request.json['bookname']
-    # response = call the right function to get response
+    response = BookAnalyser(bookname, "positive-words.txt", "negative-words.txt").analyse_sentiment()
 
     return jsonify(response), 201
 
@@ -24,7 +25,7 @@ def sentiment():
     if not request.json or not 'bookname' in request.json:
         abort(4)
     bookname = request.json['bookname']
-    #response = call the right function to get response
+    response = 'call the right function to get response'
 
     return jsonify(response), 201
 

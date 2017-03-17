@@ -1,16 +1,9 @@
 from text_analyser import *
 
-def preprocessing(textfilename):
-    file = open(textfilename)
-    rawtext = file.readlines()
-    text = remove_newline(rawtext)
-    word_list = []
-    print()
-    for line in text:
-        word_list += line.split()
-    return rawtext, word_list
-
-def analyse_meaning( textfilename, list_of_words_to_omit = [], silent = False ):
+def analyse_meaning( textfilename,
+                     list_of_words_to_omit = [],
+                     silent = False
+                     ):
     if not silent:
         print("This simple program attempts to summarise a book in a sentence.")
 
@@ -61,7 +54,8 @@ def analyse_meaning( textfilename, list_of_words_to_omit = [], silent = False ):
     after_not = most_freq_after(word_list, "not")
     start = most_freq_start(word_list)
     end = most_freq_start(word_list, 0)
-    summary = "The " + max_posnoun + " is/are " + max_gerund + " " + max_spverb + " " + max_thirdsingpres + " " + max_modal + " be the " + max_cnum + " " + max_plnoun + " " + before_the + " the " + after_the + "."
+    summary = "The " + max_posnoun + " is/are " + max_gerund + " " + max_spverb + " " + max_thirdsingpres + " " \
+              +max_modal + " be the " + max_cnum + " " + max_plnoun + " " + before_the + " the " + after_the + "."
     sentence = create_sentence(word_list, start, 10)
     sentence_list = create_sentence_list(create_string(rawtext))
     sentence_dict = create_sentence_dict(sentence_list)
@@ -85,15 +79,21 @@ def analyse_meaning( textfilename, list_of_words_to_omit = [], silent = False ):
         print("I might need to work a bit on my grammar.... :)")
         print()
         print("Let me try it again:")
-        print("The most 'probable' 10 word sentence:(putting the most frequent word after the most probable start of sentence...)")
+        print("The most 'probable' 10 word sentence:(putting the most frequent word after the most probable start "
+              "of sentence...)")
         print(sentence)
         print("That might be a bit closer...")
         print()
-        print("I have another method, let me show yout the most 'powerful' sentences: (the sentence from the book contaning the most of the most probable words)")
+        print("I have another method, let me show yout the most 'powerful' sentences: (the sentence from the book "
+              "contaning the most of the most probable words)")
         print(powerful)
 
 
-def analyse_sentiment( textfilename, positive_words_file_name = "positive-words.txt", negative_words_file_name = "negative-words.txt", silent = False):
+def analyse_sentiment( textfilename,
+                       positive_words_file_name = "positive-words.txt",
+                       negative_words_file_name = "negative-words.txt",
+                       silent = False
+                       ):
     _, word_list = preprocessing(textfilename)
     wc = len(word_list)
     book_dict = create_dict(word_list)
@@ -101,15 +101,8 @@ def analyse_sentiment( textfilename, positive_words_file_name = "positive-words.
     _, poz_word_list = preprocessing(positive_words_file_name)
     _, neg_word_list = preprocessing(negative_words_file_name)
 
-    no_of_neg = 0
-    no_of_poz = 0
-
-    for n_word in neg_word_list:
-        if n_word in book_dict:
-            no_of_neg += book_dict[n_word]
-    for p_word in poz_word_list:
-        if p_word in book_dict:
-            no_of_poz += book_dict[p_word]
+    no_of_neg = getOccurence(book_dict, neg_word_list)
+    no_of_poz = getOccurence(book_dict, poz_word_list)
 
     if not  silent:
         print("Wordcount of the book: ", wc)
@@ -121,7 +114,6 @@ def analyse_sentiment( textfilename, positive_words_file_name = "positive-words.
 
 def main():
     txtfile = "book.txt"
-    stop_words = ["has","This","had","I","you","for","or","on","from","be","at","are","it","he","as","The","was","by","is","with","which","in","the","of","to","and","a","an","another","no","the","a","an","no","another","some","any","my","our","their","her","his","its","another","each","every","certain","its","another","this","that"]
     analyse_meaning(txtfile, stop_words)
     analyse_sentiment(txtfile)
 
