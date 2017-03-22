@@ -1,18 +1,13 @@
 import re
 
-books = {
-                'bible' : 'bible.txt',
-                'stars' : 'stars.txt'
-            }
-
 class BookAnalyser():
     stop_words = ["has", "This", "had", "I", "you", "for", "or", "on", "from", "be", "at", "are", "it", "he", "as",
-                  "The", "was", "by", "is", "with", "which", "in", "the", "of", "to", "and", "a", "an", "another", "no",
-                  "the", "a", "an", "no", "another", "some", "any", "my", "our", "their", "her", "his", "its",
-                  "another", "each", "every", "certain", "its", "another", "this", "that"]
+                  "The", "was", "by", "is", "with", "which", "in", "the", "of", "to", "and", "another", "no",
+                  "the", "a", "an", "no", "some", "any", "my", "our", "their", "her", "his",
+                   "each", "every", "certain", "its", "this", "that"]
 
-    def __init__(self, book):
-        self.rawtext, self.wordlist = self.preprocessing(book)
+    def __init__(self, book_file):
+        self.rawtext, self.wordlist = self.preprocessing(book_file)
         self.word_dict = self.create_dict(self.wordlist)
 
     def __init__(self, book_file, pos_file, neg_file):
@@ -358,10 +353,12 @@ class BookAnalyser():
         if not silent:
             print("This simple program attempts to summarise a book in a sentence.")
             print("Wordcount: ", self.word_count)
-        self.word_frequency_stat(False)
-        self.word_type_stat(False)
-        self.sentence_builder(False)
-
+        result = {
+                'freq_stat' : self.word_frequency_stat(silent),
+                'word_type_stat' : self.word_type_stat(silent),
+                'sentences' : self.sentence_builder(silent)
+        }
+        return result
 
 def main():
     txt_file        = "book.txt"
@@ -369,10 +366,9 @@ def main():
     negative_file   = "negative-words.txt"
 
     book = BookAnalyser(txt_file, positive_file, negative_file)
-    book.analyse_sentiment()
-    book.analyse_meaning()
-    #book.analyse_sentiment(silent=False)
-    #print(book)
+    print(book.analyse_sentiment())
+    print(book.analyse_meaning())
+
 
 if __name__ == '__main__':
     main()
