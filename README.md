@@ -1,7 +1,8 @@
 # Book summariser
 
-Python program trying to summarise a book using various 
-algorithms to achive different level of confidentiality.
+Python program using my custom API in order to summarise a 
+book using various algorithms to achive different level of
+confidentiality.
 
 The program is not using the nltk library for python, but 
 the second version is coming using the above mentioned
@@ -9,6 +10,22 @@ poweful tool.
 
 It has two main functions, one analises the meaning the other 
 analiises the sentiment of the text.
+
+# API endpoints:
+ 
+## To get the available books:
+* GET/books
+* Returns the available books as a JSON object
+
+## To got meaning analisys on a specific book:
+* POST/meaning 
+* Analyses the meaning of the book, and returns the result as a JSON object.
+* request format: { "bookname" : "BOOK.txt"} format
+
+## To get sentiment analisys on a specific book:
+* POST/sentiment 
+* Analyses the snetiment of the book, and returns the result as a JSON object.
+* request format: { "bookname" : "BOOK.txt"} format
 
 #How it works:
 
