@@ -27,9 +27,9 @@ analiises the sentiment of the text.
 * Analyses the snetiment of the book, and returns the result as a JSON object.
 * request format: { "bookname" : "BOOK.txt"} format
 
-#How it works:
+# How it works:
 
-#The meaning analiser: 
+# The meaning analiser: 
 
 - Reads in the book as textfile
 - separates words into word classes using regexes
@@ -38,14 +38,14 @@ analiises the sentiment of the text.
 - Identifies the most frequent start and end of sentence.
 - Tries to create sentences using the above classified words.
 
-#The sentiment analiser:
+# The sentiment analiser:
 
 - Reads in the book
 - reads in the positive and negative words in two dictionaries
 - counts each classes
 - prints the ratio of negative : positive words
 
-#Sources:
+# Sources:
 - Minqing Hu and Bing Liu. "Mining and Summarizing Customer Reviews." 
   Proceedings of the ACM SIGKDD International Conference on Knowledge 
   Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle, 
